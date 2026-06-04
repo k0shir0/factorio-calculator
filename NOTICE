@@ -1,0 +1,23 @@
+Factorio Calculator + Blueprints
+Copyright (c) 2026 k0shir0
+
+This product is a derivative of the Factorio Calculator by Kirk McDonald
+(https://github.com/KirkMcDonald/kirkmcdonald.github.io), Copyright 2015-2024
+Kirk McDonald, licensed under the Apache License, Version 2.0. A copy of the
+license is in the LICENSE file, and the original per-file copyright headers are
+retained in the source.
+
+Bundled third-party libraries (see the third_party/ directory; each retains its
+own license header):
+
+  - D3.js .............. ISC License
+  - dagre .............. MIT License
+  - big-integer ........ The Unlicense        (exposes the `bigInt` global)
+  - pako ............... MIT License
+  - Popper.js .......... MIT License
+  - marked ............. MIT License
+  - DOMPurify .......... Apache-2.0 / MPL-2.0
+
+"Factorio", its item icons, and recipe data are property of Wube Software. This
+is an unofficial, fan-made tool and is not affiliated with or endorsed by Wube
+Software.

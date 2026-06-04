@@ -1,0 +1,15 @@
+{
+  "blueprints": [
+    {
+      "slug": "output-lane-balancer",
+      "title": "Output lane balancer",
+      "category": "Balancer",
+      "tags": [
+        "Output",
+        "Balancer",
+        "Belt Balancer"
+      ],
+      "thumbnail": "Screenshot_2026-06-02_183543.png"
+    }
+  ]
+}

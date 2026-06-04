@@ -1,0 +1,299 @@
+/* Blueprints tab — black + mint-green. Variables fall back to literals so this
+   sheet is correct even if loaded before the global palette in calc.css. */
+
+#blueprints_root {
+    --bp-bg: var(--bg, #0b0f0d);
+    --bp-panel: var(--panel, #141a17);
+    --bp-card: var(--card, #171e1a);
+    --bp-accent: var(--accent, #3eb489);
+    --bp-accent-2: var(--accent-2, #5fd6a6);
+    --bp-text: var(--text, #d7e0db);
+    --bp-muted: var(--muted, #8a9a92);
+    --bp-border: var(--border, #243029);
+    --bp-danger: #d65f5f;
+
+    color: var(--bp-text);
+    max-width: 1100px;
+}
+
+/* Toolbar */
+.bp-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 18px;
+}
+.bp-search,
+.bp-category {
+    background: var(--bp-panel);
+    color: var(--bp-text);
+    border: 1px solid var(--bp-border);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 14px;
+}
+.bp-search { flex: 1 1 220px; min-width: 180px; }
+.bp-search:focus,
+.bp-category:focus { outline: none; border-color: var(--bp-accent); }
+.bp-new { margin-left: auto; }
+
+/* Buttons */
+.bp-btn {
+    background: var(--bp-panel);
+    color: var(--bp-text);
+    border: 1px solid var(--bp-border);
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.bp-btn:hover { border-color: var(--bp-accent); }
+.bp-btn-primary {
+    background: var(--bp-accent);
+    color: #07120d;
+    border-color: var(--bp-accent);
+    font-weight: 600;
+}
+.bp-btn-primary:hover { background: var(--bp-accent-2); }
+.bp-btn-danger { color: var(--bp-danger); border-color: #3a2626; }
+.bp-btn-danger:hover { border-color: var(--bp-danger); }
+
+/* Gallery grid */
+.bp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+}
+.bp-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--bp-card);
+    border: 1px solid var(--bp-border);
+    border-radius: 10px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform .08s ease, border-color .08s ease;
+}
+.bp-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--bp-accent);
+}
+.bp-card-thumb {
+    aspect-ratio: 16 / 10;
+    background: #0e1411;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.bp-card-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.bp-card-thumb-fallback {
+    color: #07120d;
+    font-size: 38px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, var(--bp-accent), var(--bp-accent-2));
+}
+.bp-card-body { padding: 12px 14px; }
+.bp-card-title { font-size: 15px; font-weight: 600; line-height: 1.3; }
+.bp-card-meta { margin-top: 8px; }
+
+.bp-badge {
+    display: inline-block;
+    background: rgba(62, 180, 137, .15);
+    color: var(--bp-accent-2);
+    border: 1px solid var(--bp-border);
+    border-radius: 999px;
+    padding: 2px 10px;
+    font-size: 12px;
+}
+.bp-tag {
+    display: inline-block;
+    color: var(--bp-muted);
+    font-size: 12px;
+    margin-left: 8px;
+}
+
+.bp-empty, .bp-loading {
+    grid-column: 1 / -1;
+    color: var(--bp-muted);
+    padding: 40px 0;
+    text-align: center;
+}
+
+/* Article */
+.bp-article { max-width: 900px; }
+.bp-article-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+.bp-article-actions { display: flex; gap: 8px; }
+.bp-back {
+    background: none;
+    border: none;
+    color: var(--bp-accent);
+    cursor: pointer;
+    font-size: 14px;
+    padding: 6px 0;
+}
+.bp-back:hover { color: var(--bp-accent-2); text-decoration: underline; }
+.bp-title { font-size: 26px; margin: 6px 0 8px; color: #fff; }
+.bp-article-meta { margin-bottom: 18px; }
+
+.bp-video {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border: 1px solid var(--bp-border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 18px;
+}
+.bp-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.bp-video-link a { color: var(--bp-accent); }
+
+.bp-string-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+}
+.bp-string-hint { color: var(--bp-muted); font-size: 13px; }
+
+.bp-body { line-height: 1.6; }
+.bp-body h2 { font-size: 20px; margin: 22px 0 8px; color: #fff; border-bottom: 1px solid var(--bp-border); padding-bottom: 4px; }
+.bp-body h3 { font-size: 16px; margin: 18px 0 6px; color: var(--bp-accent-2); }
+.bp-body a { color: var(--bp-accent); }
+.bp-body code {
+    background: #0e1411;
+    border: 1px solid var(--bp-border);
+    border-radius: 4px;
+    padding: 1px 5px;
+    font-size: 13px;
+}
+.bp-body pre { background: #0e1411; border: 1px solid var(--bp-border); border-radius: 8px; padding: 12px; overflow: auto; }
+.bp-body pre code { border: none; padding: 0; }
+.bp-body table { border-collapse: collapse; margin: 12px 0; }
+.bp-body th, .bp-body td { border: 1px solid var(--bp-border); padding: 6px 12px; text-align: left; }
+.bp-body th { background: var(--bp-panel); }
+.bp-body img { max-width: 100%; border-radius: 8px; }
+.bp-body blockquote { border-left: 3px solid var(--bp-accent); margin: 12px 0; padding: 4px 14px; color: var(--bp-muted); }
+
+.bp-gallery-heading { font-size: 20px; margin: 26px 0 10px; color: #fff; }
+/* Screenshots stack vertically and show in full — never cropped. Each scales
+   down to fit the article width but is otherwise shown at its natural size. */
+.bp-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.bp-gallery a {
+    display: block;
+    align-self: flex-start;
+    max-width: 100%;
+}
+.bp-gallery img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--bp-border);
+    border-radius: 8px;
+    display: block;
+}
+
+/* Editor */
+.bp-editor { max-width: 920px; }
+.bp-field { margin-bottom: 14px; }
+.bp-label { display: block; font-size: 13px; color: var(--bp-muted); margin-bottom: 4px; }
+.bp-input {
+    width: 100%;
+    background: var(--bp-panel);
+    color: var(--bp-text);
+    border: 1px solid var(--bp-border);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+.bp-input:focus { outline: none; border-color: var(--bp-accent); }
+.bp-input[readonly] { color: var(--bp-muted); }
+.bp-textarea { min-height: 320px; resize: vertical; font-family: ui-monospace, "Cascadia Code", Menlo, Consolas, monospace; line-height: 1.5; }
+.bp-textarea-small { min-height: 70px; resize: vertical; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12px; }
+
+.bp-body-edit-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.bp-body-edit-col { display: flex; flex-direction: column; }
+.bp-preview {
+    min-height: 320px;
+    background: var(--bp-panel);
+    border: 1px solid var(--bp-border);
+    border-radius: 6px;
+    padding: 10px 14px;
+    overflow: auto;
+}
+
+.bp-dropzone {
+    border: 1px dashed var(--bp-border);
+    border-radius: 8px;
+    padding: 18px;
+    text-align: center;
+    color: var(--bp-muted);
+    cursor: pointer;
+    background: var(--bp-panel);
+}
+.bp-dropzone:hover, .bp-dropzone.dragover { border-color: var(--bp-accent); color: var(--bp-text); }
+.bp-images-hint { font-size: 12px; color: var(--bp-muted); margin: 8px 0; }
+.bp-images-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.bp-images-empty { color: var(--bp-muted); font-size: 13px; }
+.bp-image-item {
+    border: 1px solid var(--bp-border);
+    border-radius: 8px;
+    padding: 6px;
+    background: var(--bp-card);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.bp-image-item.is-thumb { border-color: var(--bp-accent); }
+.bp-image-item img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 4px; }
+.bp-image-name { font-size: 11px; color: var(--bp-muted); word-break: break-all; }
+.bp-mini {
+    background: var(--bp-panel);
+    color: var(--bp-text);
+    border: 1px solid var(--bp-border);
+    border-radius: 4px;
+    padding: 3px 6px;
+    font-size: 11px;
+    cursor: pointer;
+}
+.bp-mini:hover { border-color: var(--bp-accent); }
+.bp-mini-danger:hover { border-color: var(--bp-danger); color: var(--bp-danger); }
+
+.bp-editor-actions { display: flex; align-items: center; gap: 10px; margin-top: 18px; }
+.bp-status { color: var(--bp-muted); font-size: 13px; }
+
+@media (max-width: 720px) {
+    .bp-body-edit-cols { grid-template-columns: 1fr; }
+}
+
+/* Credits tab — reuses .bp-body typography, which references the --bp-* palette
+   vars that are otherwise scoped to #blueprints_root, so define them here too. */
+.credits {
+    --bp-accent: var(--accent);
+    --bp-accent-2: var(--accent-2);
+    --bp-border: var(--border);
+    --bp-panel: var(--panel);
+    --bp-text: var(--text);
+    --bp-muted: var(--muted);
+    max-width: 760px;
+    padding: 4px 2px 24px;
+}
+.credits h1 { font-size: 26px; color: #fff; margin: 6px 0 16px; }
+.credits h3 { color: var(--accent-2); }
+.credits ul, .credits ol { padding-left: 1.3em; }
+.credits li { margin: 6px 0; }

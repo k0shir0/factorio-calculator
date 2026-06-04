@@ -1,0 +1,10 @@
+{
+  "name": "factorio-site",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Minimal Factorio production calculator + blueprint library.",
+  "scripts": {
+    "editor": "node tools/editor-server.js",
+    "dev": "node tools/editor-server.js"
+  }
+}

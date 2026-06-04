@@ -1,0 +1,17 @@
+{
+  "slug": "output-lane-balancer",
+  "title": "Output lane balancer",
+  "category": "Balancer",
+  "tags": [
+    "Output",
+    "Balancer",
+    "Belt Balancer"
+  ],
+  "videoUrl": "https://youtu.be/HRTDMVUrE18",
+  "thumbnail": "Screenshot_2026-06-02_183543.png",
+  "images": [
+    "Screenshot_2026-06-02_183543.png"
+  ],
+  "blueprintString": "",
+  "bodyMarkdown": "Balances the output of a belt  using a splitter, can balance both single item belts and double. "
+}

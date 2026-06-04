@@ -1,0 +1,21 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+.vscode/
+.idea/
+
+# Node (only the local editor tooling ever uses Node; there are no deps,
+# but ignore these in case you add some)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+package-lock.json.bak
+
+# Logs
+*.log
+
+# Claude Code / local agent + preview config (not part of the published site)
+.claude/
