@@ -59,6 +59,7 @@ Apache License 2.0. See the LICENSE file in this repository.-->
         <button class="tab_button" id="graph_button" onclick="handlers.clickVisualize()">Visualize</button>
         <button class="tab_button" id="resources_button" onclick="handlers.clickTab('resources')">Resources</button>
         <button class="tab_button" id="settings_button" onclick="handlers.clickTab('settings')">Settings</button>
+        <button class="tab_button" id="ratios_button" onclick="handlers.clickTab('ratios')">Ratios</button>
         <button class="tab_button" id="blueprints_button" onclick="handlers.clickTab('blueprints')">Blueprints</button>
         <button class="tab_button" id="credits_button" onclick="handlers.clickTab('credits')">Credits</button>
     </div>
@@ -235,6 +236,10 @@ Apache License 2.0. See the LICENSE file in this repository.-->
         <p>Click and drag items to configure resource priority.<br />
         Higher numbers = more valuable</p>
         <div id="resource_settings"></div>
+    </div>
+
+    <div id="ratios_tab" class="tab">
+        <div id="ratios_root"></div>
     </div>
 
     <div id="blueprints_tab" class="tab">

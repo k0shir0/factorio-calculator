@@ -24,6 +24,7 @@ import { getModules } from "./module.js"
 import { getPlanets } from "./planet.js"
 import { getRecipes } from "./recipe.js"
 import { currentMod, MODIFICATIONS, renderDataSetOptions, renderSettings } from "./settings.js"
+import { renderRatios } from "./ratios.js"
 
 function reset() {
     window.location.hash = ""
@@ -101,6 +102,9 @@ function loadData(modName, settings) {
         getSprites(data)
         let itemGroups = getItemGroups(items, data)
         spec.setData(items, recipes, planets, modules, buildings, belts, fuel, itemGroups)
+
+        // Render the static Ratios reference now that item icons are available.
+        renderRatios()
 
         fixLegacySettings(settings)
         renderSettings(settings)
