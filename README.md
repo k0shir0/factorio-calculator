@@ -13,18 +13,22 @@ content.
 
 - **Factory / Visualize / Resources / Settings** — the production calculator
   (base vanilla Factorio 2.0 data).
+- **Ratios** — a visual reference of common production ratios (steam power,
+  smelting, oil cracking, green circuits, …) drawn with the game's own icons.
 - **Blueprints** — a gallery of builds. Each opens a wiki-style article with an
   embedded build video, screenshots, an optional copy-able blueprint string, and
   a Markdown write-up.
-- **Credits** — attribution and a changelog of fixes/cleanup.
+- **Credits** — attribution, the **Sources** / references behind the data and
+  ratios, and a changelog of fixes/cleanup.
 
 ## Project layout
 
 ```
 index.html              Entry point (all tabs live here)
 calc.css / dropdown.css Calculator styles (restyled)
-blueprints.css          Blueprints + Credits styles
-blueprints.js           Blueprints gallery, article view, and dev-only editor UI
+blueprints.css          Blueprints / Ratios / Credits styles
+blueprints.js           Blueprints gallery, article view, and create/publish editor
+ratios.js               Ratios reference tab
 *.js                    Calculator engine (recipe solver, graphs, etc.)
 third_party/            Vendored libraries (d3, dagre, BigInteger, pako, popper,
                         marked, DOMPurify)

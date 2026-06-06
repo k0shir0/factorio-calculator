@@ -64,6 +64,16 @@ const RATIO_GROUPS = [
         result: "3 : 2",
         note: "Every electronic circuit needs 3 copper cables. Using the same assembler tier, 3 copper-cable assemblers exactly feed 2 electronic-circuit assemblers.",
     },
+    {
+        title: "Oil → petroleum (full cracking)",
+        chain: [
+            { key: "oil-refinery", count: 20, label: "Oil refineries" },
+            { key: "chemical-plant", count: 5, label: "Heavy-oil crackers" },
+            { key: "chemical-plant", count: 17, label: "Light-oil crackers" },
+        ],
+        result: "≈390 petroleum/s",
+        note: "Advanced oil processing (5 s per refinery: 100 crude + 50 water → 25 heavy + 45 light + 55 petroleum), then crack all heavy oil to light and all light to petroleum. With no modules the balance is 20 refineries : 5 heavy crackers : 17 light crackers. Productivity or speed modules shift these counts.",
+    },
 ]
 
 const BELT_REFERENCE = [
