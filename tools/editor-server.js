@@ -11,6 +11,7 @@
 const http = require("http")
 const fs = require("fs")
 const path = require("path")
+const { execSync } = require("child_process")
 
 const ROOT = path.resolve(__dirname, "..")
 const CONTENT = path.join(ROOT, "content", "blueprints")
@@ -113,8 +114,25 @@ function writeIndex(index) {
 // API handlers
 // ---------------------------------------------------------------------------
 
+// Best-effort: report the GitHub repo so the editor's publish panel can offer
+// direct commit links. Derived from `git remote origin`.
+function gitRepoInfo() {
+    try {
+        let remote = execSync("git remote get-url origin", { cwd: ROOT, stdio: ["ignore", "pipe", "ignore"] }).toString().trim()
+        let branch = "main"
+        try {
+            branch = execSync("git rev-parse --abbrev-ref HEAD", { cwd: ROOT, stdio: ["ignore", "pipe", "ignore"] }).toString().trim() || "main"
+        } catch (e) {}
+        let m = remote.match(/github\.com[:/]([^/]+)\/(.+?)(?:\.git)?$/i)
+        if (m) {
+            return { owner: m[1], name: m[2], branch }
+        }
+    } catch (e) {}
+    return null
+}
+
 function handleHealth(req, res) {
-    sendJSON(res, 200, { editor: true, version: 1 })
+    sendJSON(res, 200, { editor: true, version: 1, repo: gitRepoInfo() })
 }
 
 async function handleSave(req, res) {

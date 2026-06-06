@@ -1,10 +1,10 @@
 /* Ratios tab — a visual reference of common vanilla Factorio 2.0 production
  * ratios, drawn with the game's own icons (via spec.items[...].icon).
  *
- * Numbers were verified against the official wiki and this site's own
- * vanilla-2.0.55 data. Note that Factorio 2.0's fluid overhaul changed the
- * classic steam ratio: boilers now use 6 water/s (not 60), so one offshore pump
- * feeds 200 boilers, not 20.
+ * Numbers were verified against this site's own vanilla-2.0.55 data: offshore
+ * pump 1200 water/s (pumping_speed 20/tick), boiler 1.8 MW @ 165 C -> 60
+ * water/s into 60 steam/s, steam engine 900 kW drawing 30 steam/s. That gives
+ * the classic 1 offshore pump : 20 boilers : 40 steam engines = 36 MW.
  *
  * renderRatios() is called from init.js once the game data (spec) is loaded, so
  * the icons are available.
@@ -22,11 +22,11 @@ const RATIO_GROUPS = [
         title: "Steam power",
         chain: [
             { key: "offshore-pump", count: 1, label: "Offshore pump" },
-            { key: "boiler", count: 200, label: "Boilers" },
-            { key: "steam-engine", count: 400, label: "Steam engines" },
+            { key: "boiler", count: 20, label: "Boilers" },
+            { key: "steam-engine", count: 40, label: "Steam engines" },
         ],
-        result: "360 MW",
-        note: "Vanilla 2.0 numbers. Each boiler turns 6 water/s into 60 steam/s; each steam engine draws 30 steam/s for 900 kW. One offshore pump (1200 water/s) supplies 200 boilers, which power 400 steam engines. (In 1.1 this was the famous 1 : 20 : 40 — the 2.0 fluid changes made boilers far less thirsty.)",
+        result: "36 MW",
+        note: "The classic 1 : 20 : 40. Each boiler turns 60 water/s into 60 steam/s (1.8 MW); each steam engine draws 30 steam/s for 900 kW. One offshore pump (1200 water/s) feeds 20 boilers, and every boiler powers 2 steam engines — 36 MW total.",
     },
     {
         title: "Ore → plates",

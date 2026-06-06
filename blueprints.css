@@ -274,8 +274,35 @@
 .bp-mini:hover { border-color: var(--bp-accent); }
 .bp-mini-danger:hover { border-color: var(--bp-danger); color: var(--bp-danger); }
 
-.bp-editor-actions { display: flex; align-items: center; gap: 10px; margin-top: 18px; }
+.bp-editor-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 18px; }
 .bp-status { color: var(--bp-muted); font-size: 13px; }
+
+/* Publish panel (download + GitHub commit links) */
+.bp-publish { max-width: 760px; }
+.bp-publish-intro { color: var(--bp-muted); margin-bottom: 16px; line-height: 1.55; }
+.bp-step {
+    background: var(--bp-card);
+    border: 1px solid var(--bp-border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+}
+.bp-step h2 { font-size: 16px; margin: 0 0 8px; color: #fff; }
+.bp-step-path {
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-size: 12px;
+    color: var(--bp-accent-2);
+    background: #0e1411;
+    border: 1px solid var(--bp-border);
+    border-radius: 6px;
+    padding: 4px 8px;
+    display: inline-block;
+    margin-bottom: 10px;
+    word-break: break-all;
+}
+.bp-step-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.bp-step-hint { color: var(--bp-muted); font-size: 12px; margin: 8px 0 0; line-height: 1.5; }
+.bp-btn-link { text-decoration: none; }
 
 @media (max-width: 720px) {
     .bp-body-edit-cols { grid-template-columns: 1fr; }
@@ -283,7 +310,7 @@
 
 /* Credits tab — reuses .bp-body typography, which references the --bp-* palette
    vars that are otherwise scoped to #blueprints_root, so define them here too. */
-.credits {
+.credits, .sources {
     --bp-accent: var(--accent);
     --bp-accent-2: var(--accent-2);
     --bp-border: var(--border);
@@ -293,10 +320,10 @@
     max-width: 760px;
     padding: 4px 2px 24px;
 }
-.credits h1 { font-size: 26px; color: #fff; margin: 6px 0 16px; }
-.credits h3 { color: var(--accent-2); }
-.credits ul, .credits ol { padding-left: 1.3em; }
-.credits li { margin: 6px 0; }
+.credits h1, .sources h1 { font-size: 26px; color: #fff; margin: 6px 0 16px; }
+.credits h3, .sources h3 { color: var(--accent-2); }
+.credits ul, .credits ol, .sources ul, .sources ol { padding-left: 1.3em; }
+.credits li, .sources li { margin: 6px 0; }
 
 /* Ratios tab (uses the global palette vars, since it's outside #blueprints_root) */
 .ratio-intro { color: var(--muted); max-width: 820px; margin: 4px 0 16px; }

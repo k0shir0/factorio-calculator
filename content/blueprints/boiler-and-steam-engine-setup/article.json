@@ -1,0 +1,17 @@
+{
+  "slug": "boiler-and-steam-engine-setup",
+  "title": "Boiler and Steam Engine setup",
+  "category": "Energy",
+  "tags": [
+    "Power",
+    "energy",
+    "steam"
+  ],
+  "videoUrl": "",
+  "thumbnail": "Screenshot_2026-06-05_184850.png",
+  "images": [
+    "Screenshot_2026-06-05_184850.png"
+  ],
+  "blueprintString": "",
+  "bodyMarkdown": "20 boilers, 40 steam engines for  optimal power generation, 2  steam engines can be attached to each other to save space. "
+}

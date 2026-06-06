@@ -34,29 +34,35 @@ tools/editor-server.js  Local-only dev server + content editor API (never shippe
 .nojekyll               Tells GitHub Pages to serve files as-is
 ```
 
-## Run it locally (with the editor)
+## Add a blueprint (no code)
 
-The Blueprints **editor only runs locally**. `tools/editor-server.js` is a tiny
-Node server (built-ins only — **no `npm install` needed**) that serves the site
-*and* saves blueprint content into `content/blueprints/`.
+Blueprints are authored in the browser with the **+ New blueprint** GUI on the
+**Blueprints** tab — title, category, tags, video URL, an optional in-game
+blueprint string, screenshots (drag & drop; click ☆ for the gallery thumbnail),
+and a Markdown write-up. There are two ways to add the result to the library:
+
+**A. Download & commit — works on the live site or locally.** Click
+**Finish → download & publish**. The blueprint is packaged as a single
+self-contained `article.json` (screenshots embedded), and you get a **Download**
+button, **Copy** buttons, and one-click **GitHub commit links** to the exact
+paths (auto-detected from your repo). Add the two files (`article.json` and the
+updated `index.json`) and push — GitHub Pages redeploys and it goes live. The
+published library stays **read-only** for visitors; a download never changes the
+live site.
+
+**B. Save directly — when running the local editor.** Run the editor server and
+a **Save to local repo** button also appears, which writes the files straight
+into `content/blueprints/` for you:
 
 ```bash
 npm run editor          # or:  node tools/editor-server.js
-# then open http://localhost:8080
+# open http://localhost:8080, create a blueprint, click "Save to local repo"
+git add content/blueprints && git commit -m "Add blueprint" && git push
 ```
 
-On `localhost`, a **+ New blueprint** button and per-article **Edit / Delete**
-controls appear. Use them to:
-
-1. Write the article (title, category, tags, video URL, blueprint string, body).
-2. Drag in screenshots; click ☆ to choose the gallery thumbnail.
-3. **Save** — writes `content/blueprints/<slug>/article.json`, images under
-   `content/blueprints/<slug>/images/`, and updates
-   `content/blueprints/index.json`.
-
-To preview the **read-only (production)** experience locally, serve the folder
-with any plain static server instead, e.g. `npx serve .` — the editor controls
-won't appear because there is no `/api` to answer them.
+`tools/editor-server.js` uses Node built-ins only (**no `npm install`**), binds
+to `127.0.0.1`, and is never deployed. To preview the pure read-only experience,
+serve the folder with any static server, e.g. `npx serve .`.
 
 ## Publish to GitHub Pages
 

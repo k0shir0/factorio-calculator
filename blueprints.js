@@ -17,8 +17,9 @@ const CONTENT_ROOT = "content/blueprints"
 const INDEX_URL = CONTENT_ROOT + "/index.json"
 
 let root = null
-let devMode = false
-let manifest = []        // array of {slug, title, category, tags, thumbnail}
+let devMode = false              // true only when the local editor server answers
+let serverRepo = null            // {owner, name, branch} reported by the local server
+let manifest = []                // array of {slug, title, category, tags, thumbnail}
 let initialized = false
 
 // ---------------------------------------------------------------------------
@@ -76,6 +77,13 @@ function articleUrl(slug) {
 
 function imageUrl(slug, filename) {
     return `${CONTENT_ROOT}/${slug}/images/${filename}`
+}
+
+// Resolve a stored image reference to a usable <img> src. Self-contained
+// blueprints embed images as data: URLs (used as-is); server-saved blueprints
+// store a filename inside the blueprint's images/ folder.
+function imgSrc(slug, img) {
+    return (typeof img === "string" && img.startsWith("data:")) ? img : imageUrl(slug, img)
 }
 
 function slugify(title) {
@@ -155,10 +163,39 @@ async function detectDevMode() {
             return false
         }
         let data = await resp.json()
+        if (data && data.repo && data.repo.owner && data.repo.name) {
+            serverRepo = data.repo
+        }
         return !!(data && data.editor === true)
     } catch (e) {
         return false
     }
+}
+
+// Determine the GitHub repo so the publish panel can link to it: prefer what
+// the local editor server reported (from `git remote`), else derive it from a
+// GitHub Pages URL (<owner>.github.io[/<repo>]). Returns null if unknown.
+function getRepoInfo() {
+    if (serverRepo && serverRepo.owner && serverRepo.name) {
+        return { owner: serverRepo.owner, name: serverRepo.name, branch: serverRepo.branch || "main" }
+    }
+    let m = location.hostname.match(/^([a-z0-9-]+)\.github\.io$/i)
+    if (m) {
+        let owner = m[1]
+        let seg = location.pathname.split("/").filter(Boolean)[0]
+        return { owner, name: seg || `${owner}.github.io`, branch: "main" }
+    }
+    return null
+}
+
+function ghNewFileUrl(repo, path) {
+    // Path segments are all URL-safe ([a-z0-9-/._]); keep slashes literal so
+    // GitHub creates the nested folders.
+    return `https://github.com/${repo.owner}/${repo.name}/new/${repo.branch}?filename=${path}`
+}
+
+function ghEditFileUrl(repo, path) {
+    return `https://github.com/${repo.owner}/${repo.name}/edit/${repo.branch}/${path}`
 }
 
 // ---------------------------------------------------------------------------
@@ -283,10 +320,10 @@ function showGallery() {
             }
             return sel
         })(),
-        devMode ? el("button", {
+        el("button", {
             class: "bp-btn bp-btn-primary bp-new",
             onclick: () => showEditor(null),
-        }, "+ New blueprint") : null,
+        }, "+ New blueprint"),
     ])
     root.appendChild(toolbar)
 
@@ -305,7 +342,7 @@ function renderCards() {
     if (items.length === 0) {
         grid.appendChild(el("div", { class: "bp-empty" },
             manifest.length === 0
-                ? "No blueprints yet." + (devMode ? " Click “+ New blueprint” to add one." : "")
+                ? "No blueprints yet. Click “+ New blueprint” to create one."
                 : "No blueprints match your search."))
         return
     }
@@ -318,7 +355,7 @@ function card(bp) {
     let thumb
     if (bp.thumbnail) {
         thumb = el("div", { class: "bp-card-thumb" }, [
-            el("img", { src: imageUrl(bp.slug, bp.thumbnail), alt: bp.title, loading: "lazy" }),
+            el("img", { src: imgSrc(bp.slug, bp.thumbnail), alt: bp.title, loading: "lazy" }),
         ])
     } else {
         // Fallback tile: first letters of the title on a mint accent block.
@@ -423,8 +460,8 @@ async function showArticle(slug) {
     if (article.images && article.images.length) {
         let gal = el("div", { class: "bp-gallery" })
         for (let img of article.images) {
-            gal.appendChild(el("a", { href: imageUrl(slug, img), target: "_blank", rel: "noopener" }, [
-                el("img", { src: imageUrl(slug, img), alt: "", loading: "lazy" }),
+            gal.appendChild(el("a", { href: imgSrc(slug, img), target: "_blank", rel: "noopener" }, [
+                el("img", { src: imgSrc(slug, img), alt: "", loading: "lazy" }),
             ]))
         }
         container.appendChild(el("h2", { class: "bp-gallery-heading" }, "Screenshots"))
@@ -489,9 +526,24 @@ async function showEditor(slug) {
         }
     }
 
-    // Working copy of uploaded image filenames.
-    let images = (article.images || []).slice()
-    let thumbnail = article.thumbnail || ""
+    // Working image list of { name, data }. `data` is a full data: URL for
+    // newly added images; for images already committed as files it is null and
+    // `name` is the filename.
+    let images = (article.images || []).map((img, i) => {
+        if (typeof img === "string" && img.startsWith("data:")) {
+            return { name: `image-${i + 1}.png`, data: img }
+        }
+        return { name: img, data: null }
+    })
+    let thumbName = ""
+    if (article.thumbnail) {
+        if (String(article.thumbnail).startsWith("data:")) {
+            let match = images.find(im => im.data === article.thumbnail)
+            thumbName = match ? match.name : (images[0] ? images[0].name : "")
+        } else {
+            thumbName = article.thumbnail
+        }
+    }
 
     let form = el("div", { class: "bp-editor" })
     form.appendChild(el("h1", { class: "bp-title" }, isNew ? "New blueprint" : `Editing: ${article.title}`))
@@ -519,76 +571,62 @@ async function showEditor(slug) {
     let imagesField = field(form, "Images (drag & drop or click)", imagesWrap)
     let drop = el("div", { class: "bp-dropzone" }, "Drop images here or click to choose")
     let fileInput = el("input", { type: "file", accept: "image/*", multiple: "multiple", style: "display:none" })
-    let thumbHelp = el("div", { class: "bp-images-hint" }, "Click the star to set the gallery thumbnail.")
+    let thumbHelp = el("div", { class: "bp-images-hint" }, "Click ☆ to set the gallery thumbnail. Images are embedded into the downloaded blueprint file.")
     let imagesList = el("div", { class: "bp-images-list" })
     imagesWrap.appendChild(drop)
     imagesWrap.appendChild(fileInput)
     imagesWrap.appendChild(thumbHelp)
     imagesWrap.appendChild(imagesList)
 
+    function pendingSlug() {
+        return (slugInput.value || slugify(titleInput.value)).trim()
+    }
+
     function renderImages() {
         clear(imagesList)
         if (!images.length) {
             imagesList.appendChild(el("div", { class: "bp-images-empty" }, "No images yet."))
         }
-        for (let fn of images) {
-            let isThumb = fn === thumbnail
+        for (let im of images) {
+            let isThumb = im.name === thumbName
+            let src = im.data || (pendingSlug() ? imageUrl(pendingSlug(), im.name) : "")
             imagesList.appendChild(el("div", { class: "bp-image-item" + (isThumb ? " is-thumb" : "") }, [
-                el("img", { src: pendingSlug() ? imageUrl(pendingSlug(), fn) : "", alt: fn }),
-                el("div", { class: "bp-image-name" }, fn),
-                el("button", { class: "bp-mini", title: "Set as thumbnail", onclick: () => { thumbnail = fn; renderImages() } }, isThumb ? "★ thumb" : "☆ thumb"),
-                el("button", { class: "bp-mini bp-mini-danger", title: "Remove from list", onclick: () => { images = images.filter(x => x !== fn); if (thumbnail === fn) thumbnail = ""; renderImages() } }, "remove"),
+                el("img", { src, alt: im.name }),
+                el("div", { class: "bp-image-name" }, im.name),
+                el("button", { class: "bp-mini", title: "Set as thumbnail", onclick: () => { thumbName = im.name; renderImages() } }, isThumb ? "★ thumb" : "☆ thumb"),
+                el("button", { class: "bp-mini bp-mini-danger", title: "Remove", onclick: () => { images = images.filter(x => x !== im); if (thumbName === im.name) thumbName = ""; renderImages() } }, "remove"),
             ]))
         }
     }
 
-    function pendingSlug() {
-        return (slugInput.value || slugify(titleInput.value)).trim()
-    }
-
-    async function uploadFiles(fileList) {
-        let slugForUpload = pendingSlug()
-        if (!slugForUpload) {
-            alert("Enter a title or slug first, so images have a folder to go in.")
-            return
-        }
+    async function addFiles(fileList) {
         for (let file of fileList) {
             if (!file.type.startsWith("image/")) {
                 continue
             }
             try {
-                let dataBase64 = await readFileAsBase64(file)
-                let resp = await apiPost("/api/upload", {
-                    slug: slugForUpload,
-                    filename: file.name,
-                    dataBase64,
-                })
-                if (resp.ok && resp.filename) {
-                    if (!images.includes(resp.filename)) {
-                        images.push(resp.filename)
-                    }
-                    if (!thumbnail) {
-                        thumbnail = resp.filename
-                    }
-                    renderImages()
-                } else {
-                    alert("Upload failed: " + (resp.error || "unknown error"))
+                let data = await readFileAsDataUrl(file)
+                let name = uniqueImageName(images, file.name)
+                images.push({ name, data })
+                if (!thumbName) {
+                    thumbName = name
                 }
+                renderImages()
             } catch (e) {
-                alert("Upload failed: " + e.message)
+                alert("Could not read image: " + e.message)
             }
         }
     }
 
     drop.addEventListener("click", () => fileInput.click())
-    fileInput.addEventListener("change", () => { uploadFiles(fileInput.files); fileInput.value = "" })
+    fileInput.addEventListener("change", () => { addFiles(fileInput.files); fileInput.value = "" })
     drop.addEventListener("dragover", e => { e.preventDefault(); drop.classList.add("dragover") })
     drop.addEventListener("dragleave", () => drop.classList.remove("dragover"))
     drop.addEventListener("drop", e => {
         e.preventDefault()
         drop.classList.remove("dragover")
         if (e.dataTransfer && e.dataTransfer.files) {
-            uploadFiles(e.dataTransfer.files)
+            addFiles(e.dataTransfer.files)
         }
     })
     renderImages()
@@ -608,43 +646,60 @@ async function showEditor(slug) {
     form.appendChild(bodyWrap)
     renderPreview()
 
-    // Save / cancel
-    let status = el("span", { class: "bp-status" })
-    form.appendChild(el("div", { class: "bp-editor-actions" }, [
-        el("button", { class: "bp-btn bp-btn-primary", onclick: save }, "Save"),
-        el("button", { class: "bp-btn", onclick: () => slug ? navigateTo(slug) : navigateTo(null) }, "Cancel"),
-        status,
-    ]))
-
-    async function save() {
+    // Build a draft object from the current form state (or null if invalid).
+    function buildDraft() {
         let finalSlug = pendingSlug()
-        if (!titleInput.value.trim()) { alert("Title is required."); return }
-        if (!finalSlug) { alert("Slug is required."); return }
+        if (!titleInput.value.trim()) { alert("Title is required."); return null }
+        if (!finalSlug) { alert("Slug is required."); return null }
         if (isNew && manifest.some(b => b.slug === finalSlug)) {
             alert(`A blueprint with slug "${finalSlug}" already exists. Choose a different title/slug.`)
-            return
+            return null
         }
-        let payload = {
+        return {
             slug: finalSlug,
             title: titleInput.value.trim(),
             category: categoryInput.value.trim(),
             tags: tagsInput.value.split(",").map(s => s.trim()).filter(Boolean),
             videoUrl: videoInput.value.trim(),
-            thumbnail: thumbnail,
-            images: images,
             blueprintString: bpInput.value.trim(),
             bodyMarkdown: bodyInput.value,
+            images: images,
+            thumbName: thumbName,
         }
+    }
+
+    let status = el("span", { class: "bp-status" })
+    let actions = el("div", { class: "bp-editor-actions" })
+    actions.appendChild(el("button", { class: "bp-btn bp-btn-primary", onclick: onPublish }, "Finish → download & publish"))
+    if (devMode) {
+        actions.appendChild(el("button", { class: "bp-btn", onclick: onSaveServer }, "Save to local repo"))
+    }
+    actions.appendChild(el("button", { class: "bp-btn", onclick: () => slug ? navigateTo(slug) : navigateTo(null) }, "Cancel"))
+    actions.appendChild(status)
+    form.appendChild(actions)
+
+    async function onPublish() {
+        let draft = buildDraft()
+        if (!draft) { return }
+        status.textContent = "Preparing…"
+        try {
+            let { article, manifestEntry } = await buildSelfContained(draft)
+            status.textContent = ""
+            showPublishPanel(article, manifestEntry, draft.slug)
+        } catch (e) {
+            status.textContent = ""
+            alert("Could not prepare blueprint: " + e.message)
+        }
+    }
+
+    async function onSaveServer() {
+        let draft = buildDraft()
+        if (!draft) { return }
         status.textContent = "Saving…"
         try {
-            let resp = await apiPost("/api/save", payload)
-            if (resp.ok) {
-                await loadManifest()
-                navigateTo(payload.slug)
-            } else {
-                status.textContent = ""
-                alert("Save failed: " + (resp.error || "unknown error"))
-            }
+            await saveDraftToServer(draft)
+            await loadManifest()
+            navigateTo(draft.slug)
         } catch (e) {
             status.textContent = ""
             alert("Save failed: " + e.message)
@@ -680,6 +735,172 @@ async function deleteBlueprint(slug) {
 }
 
 // ---------------------------------------------------------------------------
+// Publish / export helpers
+// ---------------------------------------------------------------------------
+
+// Ensure an image name is unique within the working list (and filesystem-safe).
+function uniqueImageName(images, filename) {
+    let base = String(filename || "image.png").replace(/[^a-zA-Z0-9._-]/g, "_") || "image.png"
+    let name = base
+    let i = 1
+    while (images.some(im => im.name === name)) {
+        let dot = base.lastIndexOf(".")
+        name = dot > 0 ? `${base.slice(0, dot)}-${i}${base.slice(dot)}` : `${base}-${i}`
+        i++
+    }
+    return name
+}
+
+// Build the self-contained article.json (images embedded as data: URLs) plus
+// the small index.json manifest entry (with a downscaled thumbnail).
+async function buildSelfContained(draft) {
+    let images = draft.images.map(im => im.data || imageUrl(draft.slug, im.name))
+    let thumb = draft.images.find(im => im.name === draft.thumbName)
+    let thumbSmall = ""
+    if (thumb) {
+        thumbSmall = thumb.data ? await downscaleDataUrl(thumb.data, 360) : imageUrl(draft.slug, thumb.name)
+    }
+    let article = {
+        slug: draft.slug,
+        title: draft.title,
+        category: draft.category,
+        tags: draft.tags,
+        videoUrl: draft.videoUrl,
+        thumbnail: thumbSmall,
+        images: images,
+        blueprintString: draft.blueprintString,
+        bodyMarkdown: draft.bodyMarkdown,
+    }
+    let manifestEntry = {
+        slug: draft.slug,
+        title: draft.title,
+        category: draft.category,
+        tags: draft.tags,
+        thumbnail: thumbSmall,
+    }
+    return { article, manifestEntry }
+}
+
+// Save a draft via the local editor server: upload new images as files, then
+// write article.json and update index.json.
+async function saveDraftToServer(draft) {
+    let imageNames = []
+    let thumbnail = ""
+    for (let im of draft.images) {
+        let name = im.name
+        if (im.data) {
+            let dataBase64 = im.data.slice(im.data.indexOf(",") + 1)
+            let resp = await apiPost("/api/upload", { slug: draft.slug, filename: im.name, dataBase64 })
+            if (!resp.ok || !resp.filename) {
+                throw new Error(resp.error || "image upload failed")
+            }
+            name = resp.filename
+        }
+        imageNames.push(name)
+        if (im.name === draft.thumbName) {
+            thumbnail = name
+        }
+    }
+    let resp = await apiPost("/api/save", {
+        slug: draft.slug,
+        title: draft.title,
+        category: draft.category,
+        tags: draft.tags,
+        videoUrl: draft.videoUrl,
+        thumbnail: thumbnail,
+        images: imageNames,
+        blueprintString: draft.blueprintString,
+        bodyMarkdown: draft.bodyMarkdown,
+    })
+    if (!resp.ok) {
+        throw new Error(resp.error || "save failed")
+    }
+}
+
+function downloadText(filename, text, mime) {
+    let blob = new Blob([text], { type: mime || "application/json" })
+    let url = URL.createObjectURL(blob)
+    let a = el("a", { href: url, download: filename })
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+    setTimeout(() => URL.revokeObjectURL(url), 2000)
+}
+
+// Downscale a data: URL to at most maxW wide, returning a small JPEG data URL.
+function downscaleDataUrl(dataUrl, maxW) {
+    return new Promise(resolve => {
+        if (!dataUrl || !String(dataUrl).startsWith("data:")) { resolve(dataUrl || ""); return }
+        let img = new Image()
+        img.onload = () => {
+            let scale = Math.min(1, maxW / (img.width || maxW))
+            let w = Math.max(1, Math.round((img.width || maxW) * scale))
+            let h = Math.max(1, Math.round((img.height || maxW) * scale))
+            let canvas = document.createElement("canvas")
+            canvas.width = w
+            canvas.height = h
+            canvas.getContext("2d").drawImage(img, 0, 0, w, h)
+            try { resolve(canvas.toDataURL("image/jpeg", 0.72)) } catch (e) { resolve(dataUrl) }
+        }
+        img.onerror = () => resolve(dataUrl)
+        img.src = dataUrl
+    })
+}
+
+// The "you're done — here's how to publish" screen.
+function showPublishPanel(article, manifestEntry, slug) {
+    clear(root)
+    let repo = getRepoInfo()
+    let articleJson = JSON.stringify(article, null, 2) + "\n"
+    let entries = manifest.filter(b => b.slug !== slug).concat([manifestEntry])
+    entries.sort((a, b) => String(a.title).localeCompare(String(b.title)))
+    let indexJson = JSON.stringify({ blueprints: entries }, null, 2) + "\n"
+    let articlePath = `${CONTENT_ROOT}/${slug}/article.json`
+    let indexPath = `${CONTENT_ROOT}/index.json`
+
+    let panel = el("div", { class: "bp-publish" })
+    panel.appendChild(el("h1", { class: "bp-title" }, "Publish “" + article.title + "”"))
+    panel.appendChild(el("p", { class: "bp-publish-intro" },
+        "Your blueprint is packaged as a self-contained JSON (images included). Add these two files to the repository — GitHub Pages redeploys and it goes live."))
+
+    panel.appendChild(el("div", { class: "bp-step" }, [
+        el("h2", null, "1. Add the blueprint file"),
+        el("div", { class: "bp-step-path" }, articlePath),
+        el("div", { class: "bp-step-actions" }, [
+            el("button", { class: "bp-btn bp-btn-primary", onclick: () => downloadText(slug + ".article.json", articleJson) }, "Download article.json"),
+            el("button", { class: "bp-btn", onclick: e => copyText(articleJson, e.target) }, "Copy JSON"),
+            repo ? el("a", { class: "bp-btn bp-btn-link", href: ghNewFileUrl(repo, articlePath), target: "_blank", rel: "noopener" }, "Create on GitHub →") : null,
+        ]),
+    ]))
+
+    panel.appendChild(el("div", { class: "bp-step" }, [
+        el("h2", null, "2. Update the index"),
+        el("div", { class: "bp-step-path" }, indexPath),
+        el("div", { class: "bp-step-actions" }, [
+            el("button", { class: "bp-btn bp-btn-primary", onclick: () => downloadText("index.json", indexJson) }, "Download index.json"),
+            el("button", { class: "bp-btn", onclick: e => copyText(indexJson, e.target) }, "Copy JSON"),
+            repo ? el("a", { class: "bp-btn bp-btn-link", href: ghEditFileUrl(repo, indexPath), target: "_blank", rel: "noopener" }, "Edit on GitHub →") : null,
+        ]),
+        el("p", { class: "bp-step-hint" }, "Replace the whole file with this — it already includes your existing blueprints."),
+    ]))
+
+    if (!repo) {
+        panel.appendChild(el("p", { class: "bp-step-hint" },
+            "Direct GitHub commit links appear here automatically when you open this on your published site or run the local editor."))
+    }
+    if (devMode) {
+        panel.appendChild(el("p", { class: "bp-step-hint" },
+            "Running locally you can also go back and use “Save to local repo” to write these files directly, then commit with git."))
+    }
+
+    panel.appendChild(el("div", { class: "bp-editor-actions" }, [
+        el("button", { class: "bp-btn", onclick: () => navigateTo(null) }, "Back to gallery"),
+    ]))
+
+    root.appendChild(panel)
+}
+
+// ---------------------------------------------------------------------------
 // API + file helpers
 // ---------------------------------------------------------------------------
 
@@ -698,14 +919,10 @@ async function apiPost(path, body) {
     return data
 }
 
-function readFileAsBase64(file) {
+function readFileAsDataUrl(file) {
     return new Promise((resolve, reject) => {
         let reader = new FileReader()
-        reader.onload = () => {
-            let result = reader.result
-            let comma = result.indexOf(",")
-            resolve(comma >= 0 ? result.slice(comma + 1) : result)
-        }
+        reader.onload = () => resolve(reader.result)
         reader.onerror = () => reject(new Error("Could not read file"))
         reader.readAsDataURL(file)
     })
