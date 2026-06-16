@@ -68,62 +68,10 @@ git add content/blueprints && git commit -m "Add blueprint" && git push
 to `127.0.0.1`, and is never deployed. To preview the pure read-only experience,
 serve the folder with any static server, e.g. `npx serve .`.
 
-## Publish to GitHub Pages
 
-The site is 100% static, so publishing is just pushing the files and turning
-Pages on.
 
-**1. Create the repository and push:**
-
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-git branch -M main
-git remote add origin https://github.com/<you>/<repo>.git
-git push -u origin main
-```
-
-(Or use GitHub's web **“Add file → Upload files”** and drag everything in. The
-`.git` and `.claude` folders are not needed for that path.)
-
-**2. Enable Pages:** in the repo, go to **Settings → Pages → Build and
-deployment**, set **Source = Deploy from a branch**, **Branch = `main` / `/
-(root)`**, and Save. After a minute your site is live at
-`https://<you>.github.io/<repo>/`.
-
-**3. Add/change blueprints later:** run the editor locally, make your edits, then
-commit and push the `content/blueprints/` changes — Pages redeploys
-automatically.
-
-```bash
-git add content/blueprints
-git commit -m "Add blueprint: <name>"
-git push
-```
-
-There is **no server in production**, so the `/api/*` endpoints don't exist and
-the Blueprints library is **read-only** for visitors — by design.
-
-## Security
-
-This is a static site with a deliberately small attack surface:
-
-- Blueprint Markdown is rendered through **DOMPurify**, so even if a malicious
-  snippet were ever pasted into an article it cannot inject scripts.
-- Video/links are restricted to `http(s)`; the deep-link slug is sanitized.
-- A **Content-Security-Policy** restricts framing to YouTube/Vimeo and blocks
-  plugins/objects.
-- The editor server binds to **127.0.0.1** only and is never deployed.
-
-## Game data
-
-Only base vanilla Factorio 2.0 (`data/vanilla-2.0.55.json`) ships, and the
-data-set switcher is hidden. To regenerate/extend the data, see `dump.lua` /
-`process_data.py` ([Kirk McDonald's tooling][upstream]).
 
 ## Credits & license
-
 - Calculator code © **Kirk McDonald**, [github.com/KirkMcDonald/kirkmcdonald.github.io][upstream],
   under the **Apache License 2.0** — see [`LICENSE`](LICENSE) and [`NOTICE`](NOTICE).
 - Modifications (theme, Blueprints library + editor, cleanup) by **k0shir0**.
