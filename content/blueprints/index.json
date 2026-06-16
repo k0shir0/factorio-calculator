@@ -21,6 +21,15 @@
         "Belt Balancer"
       ],
       "thumbnail": "Screenshot_2026-06-02_183543.png"
+    },
+    {
+      "slug": "science-lab-setup",
+      "title": "Science Lab Setup",
+      "category": "Labs",
+      "tags": [
+        "Science"
+      ],
+      "thumbnail": "Screenshot_2026-06-16_161351.png"
     }
   ]
 }
