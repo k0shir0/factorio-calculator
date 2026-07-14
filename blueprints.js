@@ -355,7 +355,7 @@ function card(bp) {
     let thumb
     if (bp.thumbnail) {
         thumb = el("div", { class: "bp-card-thumb" }, [
-            el("img", { src: imgSrc(bp.slug, bp.thumbnail), alt: bp.title, loading: "lazy" }),
+            el("img", { src: imgSrc(bp.slug, bp.thumbnail), alt: bp.title, loading: "lazy", decoding: "async" }),
         ])
     } else {
         // Fallback tile: first letters of the title on a mint accent block.
@@ -461,7 +461,7 @@ async function showArticle(slug) {
         let gal = el("div", { class: "bp-gallery" })
         for (let img of article.images) {
             gal.appendChild(el("a", { href: imgSrc(slug, img), target: "_blank", rel: "noopener" }, [
-                el("img", { src: imgSrc(slug, img), alt: "", loading: "lazy" }),
+                el("img", { src: imgSrc(slug, img), alt: "", loading: "lazy", decoding: "async" }),
             ]))
         }
         container.appendChild(el("h2", { class: "bp-gallery-heading" }, "Screenshots"))

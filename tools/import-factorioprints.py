@@ -577,18 +577,40 @@ def cmd_report():
 # write
 # ---------------------------------------------------------------------------
 
+THUMB_WIDTH = 480   # card-grid thumbnails (rendered at ~220-320 CSS px)
+FULL_WIDTH = 1024   # article screenshot
+WEBP_OPTS = {"format": "WEBP", "quality": 80, "method": 6}
+
+def save_webp(data, path, max_width):
+    """Re-encodes image bytes as WebP capped at max_width; returns True on success."""
+    from PIL import Image
+    try:
+        im = Image.open(io.BytesIO(data))
+        im.load()
+        if im.mode not in ("RGB", "L"):
+            im = im.convert("RGB")
+        if im.width > max_width:
+            im = im.resize((max_width, round(im.height * max_width / im.width)),
+                           Image.LANCZOS)
+        im.save(path, **WEBP_OPTS)
+        return True
+    except Exception as e:
+        print(f"       webp encode failed ({e})")
+        return False
+
 def fetch_image(pid, rec, img_dir):
-    """Downloads the print's screenshot; returns filename or None."""
+    """Downloads the print's screenshot, stores it as WebP (full article image
+    plus a small card thumbnail); returns (image_name, thumb_name) or (None, None)."""
     image = rec.get("image") or {}
     imgur_id = image.get("id") or rec.get("imgurId")
     candidates = []
     if imgur_id:
         # 'h' suffix = 1024px thumbnail; still works for gif sources.
-        candidates.append((f"https://i.imgur.com/{imgur_id}h.jpg", f"{imgur_id}.jpg"))
+        candidates.append((f"https://i.imgur.com/{imgur_id}h.jpg", imgur_id))
     if rec.get("imageUrl"):
-        candidates.append((rec["imageUrl"], "screenshot.jpg"))
-    for url, fname in candidates:
-        cache_path = CACHE / "images" / f"{pid}-{fname}"
+        candidates.append((rec["imageUrl"], "screenshot"))
+    for url, stem in candidates:
+        cache_path = CACHE / "images" / f"{pid}-{stem}.jpg"
         try:
             if cache_path.exists():
                 data = cache_path.read_bytes()
@@ -605,9 +627,13 @@ def fetch_image(pid, rec, img_dir):
             print(f"       image unusable ({len(data)} bytes) {url}")
             continue
         img_dir.mkdir(parents=True, exist_ok=True)
-        (img_dir / fname).write_bytes(data)
-        return fname
-    return None
+        full, thumb = f"{stem}.webp", f"{stem}-thumb.webp"
+        if not save_webp(data, img_dir / full, FULL_WIDTH):
+            continue
+        if not save_webp(data, img_dir / thumb, THUMB_WIDTH):
+            thumb = full  # fall back to the article image for the card
+        return full, thumb
+    return None, None
 
 def body_markdown(pid, rec, a):
     author = author_name(rec)
@@ -655,14 +681,14 @@ def cmd_write():
 
         art_dir = CONTENT / slug
         art_dir.mkdir(parents=True, exist_ok=True)
-        fname = fetch_image(pid, rec, art_dir / "images")
+        fname, thumb = fetch_image(pid, rec, art_dir / "images")
         article = {
             "slug": slug,
             "title": title,
             "category": CATEGORY[pid],
             "tags": clean_tags(rec),
             "videoUrl": "",
-            "thumbnail": fname or "",
+            "thumbnail": thumb or "",
             "images": [fname] if fname else [],
             "blueprintString": rec["blueprintString"].strip(),
             "bodyMarkdown": body_markdown(pid, rec, a),
