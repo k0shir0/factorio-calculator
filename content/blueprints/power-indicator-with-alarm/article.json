@@ -1,0 +1,16 @@
+{
+  "slug": "power-indicator-with-alarm",
+  "title": "🔌 🔊 Power Indicator with Alarm",
+  "category": "Power",
+  "tags": [
+    "indicator",
+    "0.15"
+  ],
+  "videoUrl": "",
+  "thumbnail": "3ii5th2.jpg",
+  "images": [
+    "3ii5th2.jpg"
+  ],
+  "blueprintString": "0eNrdm12P6jYQhv/KypcVrOKPsIDaSntZqRe9blVFJnjBOvmSk7BFK/577WRZOI4nijk5CLjZVZKJ7XkyY7/jhA+0SmpRKJlVaPmBZJxnJVr+84FKucl4Ys5V+0KgJZKVSNEEZTw1R4XKN4qnKV8lYloWgn8TCh0mSGZr8R9a4sO/EySySlZStO01B/soq9OVtlzir5ZMjxXPqmmcpyuZ8SpXupsiL/W9eWYGoNub0gna63+h7kLfUKk8iVZiy3dSW2uTN5lUQgEj30lV1frMV5etxXSjhMhQ02Jt3Mfnw287ykRsRlGa1rD5o8T63B2pj6g2PhwmHRfJZS6yG3SRAS7SU38pT5JpwtPC4Rnpf3ixVHEtq0hfW3/d9yZVWUWDHeXZvtrKbNP62uJGy0VgjtKCq4b5Ev1urtel0H0luYFZqVoM54DPGJjj0IR5y9iyDC1LGgIImRdCdnWE85EREgvMC4jwZSjCcBhC/ChRSC0wMxChw9JJcDaIYPAoAPvS1g3oxSvE7j9LmRU4c5CYw9JJcO4TYvcPsG9acwNaXCYX6A3KBYwBH3FwmZNkTCf3Ikny9xG8JJCX2GtNp1cP9peRg31hzQGYgtGP6dBVHRMviuTqFGdji8vAxggv7PrSUIzUa+m6/2DEtkjHDMbosnVjZD7r1wNQ7E1hgFHow+gBErY3PwFGM690fABIdsGHYfWN7aoZXmJfLhMS+CaFxALycn6Rl8EtOkkCyMmF1zqPr54R4dgZYW9sEAxmBMFD13kS+GAMrk6RjU1xblOEl3nCBlPEXtPzAwSjrd0Jgadnl60bI/FRAvdPsT+DAUbUg9H952t/egKImE82PgAjuwIksAondiENLrDkTJbXKz30hkGHInsOW4zPobOV2UVa5CYFF4E2KcllsvImt6cIpCrJ3EcpXH9ypmNnVWevJIBfmASDlYKXbL1+HUfGpth5HQfPTXTwJh8NfGb4B4hFW7XSHuXgsnVTxB5S4v4h9ucvgMhHkd5/tvYnJ4DIa6f4AWY0u5yhcOlD7V0scHWlJ826FrFcC9WrIMin6jI411K1w26+HXLB/WzxBLf8eXR/1TfmdVXUHk2/tm0W+6jRLtGbytNIZroNtHzjSSkOwONxQw8bvUOgd9Sa9DHa2i9LwHfUliU4j56UMo/jOq0TQPYdtTJ9hj6G8CX3N/JC04ndzmLRqSU61Xt3Z9bebOpsm9jHHa7W9c4KBmbNZdXFqC+/TYj9+MeAoIeXlRbs9jyEiifqVVdc/xOPsZdYWxAzWMrR0GHrhuhVVlz/PSMem6JdnDHiQRHaf2SBh9q7+0jsCTwwzpjXRvf9J6u9ErGeGsJl64ZIfCA+QLLaEoL1lBkuWzdFn43w+4fYM8HB89mpqOBKVttUVDIeVFfQQXXFqdEfKy0Ej7ff0zOxnxdCtZvOS/TLBVVF26pf6dCtDXoqia61Fbrgx/th/w9iupvsP306fbWi1wre35rLn/2Y0/qpNzryKCOjHU9qEckyKmSlubd1m5GKpY7zVANokJgFNq/E8YMgj/B3PBl99/dDKRK+X/H4W7TLk9p4p934OrdJ8pWeJvZt4k0QN/vlUZEn+2KbZ/tjpWkuCNVxcqttmwvH25szeRalvDieMr+C+iTejBH4DdR5jfjVXSrKkm/M5T/z96cifze/izIZ39y7PPu51QQlfCX0M0V/GaunP/RDj01jT+86G59eE65MZzs98iYUZoyRkM4w03Xa4X8He4s4",
+  "bodyMarkdown": "By **Factorio Blueprints** — [View on FactorioPrints](https://factorioprints.com/view/-Kl-a5-7hM9UdJQEYzjU).\n\nCombinator gadget that lights a row of lamps per 10% of stored power and sounds an alarm when the network dips below 20%.\n\n*made for Factorio 0.15 — imports fine in 2.0, the game migrates old entities automatically.*"
+}

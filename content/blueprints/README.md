@@ -65,3 +65,15 @@ generated text tile).
 
 Keep `index.json` in sync with the `article.json` files (the editor does this for
 you). After editing, commit and push to publish.
+
+## Imported blueprints
+
+Most of the library was imported from [FactorioPrints](https://factorioprints.com/)
+by `tools/import-factorioprints.py` (see its docstring for usage). Imported
+articles credit the original author and link back to the original post in
+`bodyMarkdown`. Only vanilla-compatible prints are imported: the script decodes
+every blueprint string and rejects anything that references Space Age or modded
+entities, so every published string imports cleanly in Factorio 2.0. Re-running
+the script refreshes/regenerates those articles; the three hand-made ones
+(`boiler-and-steam-engine-setup`, `output-lane-balancer`, `science-lab-setup`)
+are never touched by it.

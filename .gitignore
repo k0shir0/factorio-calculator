@@ -17,5 +17,8 @@ package-lock.json.bak
 # Logs
 *.log
 
+# Download cache for tools/import-factorioprints.py (raw factorioprints data)
+tools/.fp-cache/
+
 # Claude Code / local agent + preview config (not part of the published site)
 .claude/

@@ -1,9 +1,219 @@
 {
   "blueprints": [
     {
+      "slug": "0-15-science-setup-all-6-types-1-pack-per-second",
+      "title": "0.15 science setup (All 6 types, 1 pack per second)",
+      "category": "Science",
+      "tags": [
+        "science",
+        "belt based",
+        "0.15"
+      ],
+      "thumbnail": "Qbanizh.jpg"
+    },
+    {
+      "slug": "0-16-base-monitoring",
+      "title": "0.16 Base Monitoring",
+      "category": "Logistics",
+      "tags": [
+        "indicator",
+        "accumulator"
+      ],
+      "thumbnail": "fgZqmlN.jpg"
+    },
+    {
+      "slug": "0-17-big-mall-by-swaggoflamingo",
+      "title": "0.17 Big Mall by SwaggoFlamingo",
+      "category": "Mall",
+      "tags": [
+        "0.17",
+        "mall (make everything)"
+      ],
+      "thumbnail": "20aReTS.jpg"
+    },
+    {
+      "slug": "1-0-science-book-tileable-v-3-7",
+      "title": "1.0 Science Book - Tileable (v. 3.7)",
+      "category": "Science",
+      "tags": [
+        "science",
+        "tileable",
+        "compact",
+        "0.17",
+        "rocket parts",
+        "beaconized",
+        "research (labs)",
+        "0.18",
+        "1.0"
+      ],
+      "thumbnail": "iaegYwm.jpg"
+    },
+    {
+      "slug": "1000-science-per-minute-belt-based",
+      "title": "1000 Science per minute (belt-based)",
+      "category": "Science",
+      "tags": [
+        "science",
+        "research (labs)",
+        "beaconized",
+        "0.15"
+      ],
+      "thumbnail": "HzBsKH3.jpg"
+    },
+    {
+      "slug": "2-0-space-age-rails-blueprint-book",
+      "title": "2.0 Space Age Rails Blueprint Book",
+      "category": "Trains & Rails",
+      "tags": [
+        "2.0",
+        "loading station",
+        "crossing",
+        "stacker",
+        "track"
+      ],
+      "thumbnail": "l18ndmb.jpg"
+    },
+    {
+      "slug": "2-5k-megabase-in-a-book",
+      "title": "2.5k Megabase in a Book",
+      "category": "Production Blocks",
+      "tags": [
+        "late game (megabase)",
+        "rocket parts",
+        "science",
+        "research (labs)",
+        "beaconized",
+        "0.18"
+      ],
+      "thumbnail": "p4LJEnl.jpg"
+    },
+    {
+      "slug": "4-reactor-nuclear-power-belted-steam-capacitors",
+      "title": "4 Reactor Nuclear power (belted) (steam capacitors)",
+      "category": "Power",
+      "tags": [
+        "nuclear",
+        "0.15"
+      ],
+      "thumbnail": "Mw2Y52O.jpg"
+    },
+    {
+      "slug": "advanced-oil-processing-allrounder-mk2",
+      "title": "Advanced Oil Processing Allrounder Mk2",
+      "category": "Oil & Chemicals",
+      "tags": [
+        "oil processing",
+        "tileable",
+        "batteries",
+        "0.15"
+      ],
+      "thumbnail": "5ewNtce.jpg"
+    },
+    {
+      "slug": "advanced-oil-refinary-v10-for-v1-0-extra-module",
+      "title": "Advanced Oil Refinary v10 for v1.0 (+ Extra Module for more Petroleum Oil production)",
+      "category": "Oil & Chemicals",
+      "tags": [
+        "oil processing",
+        "rocket parts",
+        "late game (megabase)",
+        "1.0"
+      ],
+      "thumbnail": "GLnrqkx.jpg"
+    },
+    {
+      "slug": "all-modules",
+      "title": "All Modules",
+      "category": "Mall",
+      "tags": [
+        "beaconized",
+        "compact",
+        "modules"
+      ],
+      "thumbnail": "5UX4nEH.jpg"
+    },
+    {
+      "slug": "all-the-belts",
+      "title": "All the Belts",
+      "category": "Mall",
+      "tags": [
+        "belts",
+        "0.15"
+      ],
+      "thumbnail": "TYfWsMC.jpg"
+    },
+    {
+      "slug": "all-the-inserters",
+      "title": "All the Inserters",
+      "category": "Mall",
+      "tags": [
+        "inserters",
+        "0.15"
+      ],
+      "thumbnail": "JyXI5rT.jpg"
+    },
+    {
+      "slug": "balanced-train-unloader-balanced-buffer-for-1-4",
+      "title": "Balanced Train Unloader; Balanced Buffer; for 1-4 Wagons; downgradable",
+      "category": "Trains & Rails",
+      "tags": [
+        "unloading station",
+        "balancer",
+        "0.17"
+      ],
+      "thumbnail": "l2i43BH.jpg"
+    },
+    {
+      "slug": "basic-mining-and-smelting",
+      "title": "Basic Mining and Smelting",
+      "category": "Smelting & Mining",
+      "tags": [
+        "mining",
+        "smelting",
+        "early game",
+        "compact"
+      ],
+      "thumbnail": "2CpZvSv.jpg"
+    },
+    {
+      "slug": "belt-balancer-compendium-with-nice-icons-by",
+      "title": "Belt balancer compendium with nice icons by tuckjohn37 and RedditNamesAreShort.",
+      "category": "Belts & Balancers",
+      "tags": [
+        "balancer",
+        "express transport belt (blue)",
+        "0.15"
+      ],
+      "thumbnail": "kAotEcf.jpg"
+    },
+    {
+      "slug": "big-ass-mall-v4",
+      "title": "Big-ass Mall (v4)",
+      "category": "Mall",
+      "tags": [
+        "mid game",
+        "belt based",
+        "mall (make everything)",
+        "storage",
+        "unloading station",
+        "0.16"
+      ],
+      "thumbnail": "jAT5XDc.jpg"
+    },
+    {
+      "slug": "blue-circuits",
+      "title": "Blue Circuits",
+      "category": "Circuits",
+      "tags": [
+        "processing unit (blue)",
+        "0.15"
+      ],
+      "thumbnail": "Jy789R7.jpg"
+    },
+    {
       "slug": "boiler-and-steam-engine-setup",
       "title": "Boiler and Steam Engine setup",
-      "category": "Energy",
+      "category": "Power",
       "tags": [
         "Power",
         "energy",
@@ -12,9 +222,524 @@
       "thumbnail": "Screenshot_2026-06-05_184850.png"
     },
     {
+      "slug": "book-trainstations",
+      "title": "Book: Trainstations",
+      "category": "Trains & Rails",
+      "tags": [
+        "unloading station",
+        "mining",
+        "0.15",
+        "right-hand-drive"
+      ],
+      "thumbnail": "OvgfZqp.jpg"
+    },
+    {
+      "slug": "bot-production",
+      "title": "Bot Production",
+      "category": "Logistics",
+      "tags": [
+        "robots",
+        "belt based",
+        "early game",
+        "mid game"
+      ],
+      "thumbnail": "MDjiHBZ.jpg"
+    },
+    {
+      "slug": "brian-s-bootstrap",
+      "title": "Brian's Bootstrap",
+      "category": "Starter Base",
+      "tags": [
+        "early game",
+        "belt based",
+        "mall (make everything)",
+        "2.0"
+      ],
+      "thumbnail": "Zw8yBBg.jpg"
+    },
+    {
+      "slug": "chunk-aligned-modular-rail-system-4-lane-power",
+      "title": "Chunk-Aligned Modular Rail System - 4 lane - Power and signal wires (LTK)",
+      "category": "Trains & Rails",
+      "tags": [
+        "crossing",
+        "0.15",
+        "0.16",
+        "track",
+        "junction",
+        "roundabout",
+        "right-hand-drive",
+        "chunk aligned"
+      ],
+      "thumbnail": "U2eZ9Qs.jpg"
+    },
+    {
+      "slug": "chunk-aligned-railway-system-with-wires",
+      "title": "Chunk-Aligned Railway System with Wires",
+      "category": "Trains & Rails",
+      "tags": [
+        "junction",
+        "crossing",
+        "right-hand-drive",
+        "chunk aligned",
+        "0.15"
+      ],
+      "thumbnail": "mxw89US.jpg"
+    },
+    {
+      "slug": "circuit-book-green-red-blue",
+      "title": "Circuit Book (Green/Red/Blue)",
+      "category": "Circuits",
+      "tags": [
+        "express transport belt (blue)",
+        "early game",
+        "mid game",
+        "late game (megabase)",
+        "beaconized",
+        "tileable",
+        "compact",
+        "chunk aligned",
+        "electronic circuit (green)",
+        "advanced circuit (red)",
+        "processing unit (blue)",
+        "loading station",
+        "unloading station",
+        "stacker",
+        "left-hand-drive",
+        "right-hand-drive",
+        "1.0"
+      ],
+      "thumbnail": "1BrSmVD.jpg"
+    },
+    {
+      "slug": "circuits-red-advanced-octagon-simplified",
+      "title": "Circuits (Red / Advanced) Octagon Simplified",
+      "category": "Circuits",
+      "tags": [
+        "advanced circuit (red)",
+        "2.0",
+        "tileable"
+      ],
+      "thumbnail": "dTgavBZ.jpg"
+    },
+    {
+      "slug": "compact-all-inserter-setup",
+      "title": "Compact All Inserter Setup",
+      "category": "Mall",
+      "tags": [
+        "inserters",
+        "compact",
+        "0.15"
+      ],
+      "thumbnail": "elNdiMi.jpg"
+    },
+    {
+      "slug": "compact-early-game-robot-production-roboprodo-v1",
+      "title": "Compact Early Game Robot Production \"Roboprodo v1.6\"",
+      "category": "Logistics",
+      "tags": [
+        "robots",
+        "early game",
+        "compact",
+        "0.15"
+      ],
+      "thumbnail": "YTqtAYv.jpg"
+    },
+    {
+      "slug": "compact-processing-units-complex-mid-late-game-v",
+      "title": "Compact processing units complex (mid-late game) [v. 0.15]",
+      "category": "Circuits",
+      "tags": [
+        "processing unit (blue)",
+        "mid game",
+        "0.15",
+        "compact"
+      ],
+      "thumbnail": "bdT3FL9.jpg"
+    },
+    {
+      "slug": "compact-reactor-x4-smart-safe-477-mw-fixed-for-0",
+      "title": "Compact Reactor x4 (smart, safe, 477 MW) fixed for 0.17",
+      "category": "Power",
+      "tags": [
+        "nuclear",
+        "compact",
+        "0.16",
+        "0.17"
+      ],
+      "thumbnail": "ZjSAt9y.jpg"
+    },
+    {
+      "slug": "compact-perfect-ratio-module-setup",
+      "title": "Compact, perfect ratio Module setup",
+      "category": "Mall",
+      "tags": [
+        "modules",
+        "compact",
+        "0.15"
+      ],
+      "thumbnail": "LQUecAW.jpg"
+    },
+    {
+      "slug": "complete-uranium-processing",
+      "title": "Complete Uranium Processing",
+      "category": "Power",
+      "tags": [
+        "kovarex enrichment",
+        "uranium",
+        "beaconized",
+        "0.16",
+        "belt based",
+        "logistic (bot) based"
+      ],
+      "thumbnail": "l7Ip1cL.jpg"
+    },
+    {
+      "slug": "compressed-green-circuits",
+      "title": "Compressed Green Circuits",
+      "category": "Circuits",
+      "tags": [
+        "electronic circuit (green)",
+        "beaconized",
+        "belt based",
+        "0.15"
+      ],
+      "thumbnail": "z41nhr5.jpg"
+    },
+    {
+      "slug": "early-game-base-with-all-the-science",
+      "title": "Early Game Base with all the Science",
+      "category": "Starter Base",
+      "tags": [
+        "early game",
+        "science",
+        "research (labs)",
+        "0.17",
+        "robots"
+      ],
+      "thumbnail": "5rUA5RZ.jpg"
+    },
+    {
+      "slug": "early-game-mall-0-17-v8",
+      "title": "Early Game Mall 0.17 v8",
+      "category": "Mall",
+      "tags": [
+        "mall (make everything)",
+        "0.17",
+        "early game",
+        "compact"
+      ],
+      "thumbnail": "v6DFdt7.jpg"
+    },
+    {
+      "slug": "early-game-smelting",
+      "title": "Early game smelting",
+      "category": "Smelting & Mining",
+      "tags": [
+        "smelting",
+        "early game",
+        "transport belt (yellow)",
+        "0.15"
+      ],
+      "thumbnail": "CT1dMCg.jpg"
+    },
+    {
+      "slug": "easy-tile-solar-array",
+      "title": "Easy-tile Solar Array",
+      "category": "Power",
+      "tags": [
+        "solar",
+        "tileable",
+        "0.15"
+      ],
+      "thumbnail": "NElEDvC.jpg"
+    },
+    {
+      "slug": "elderaxe-s-2-lane-chunk-snapped-rht-tracks-v6-0",
+      "title": "ElderAxe's 2 Lane Chunk Snapped RHT Tracks (v6.0.2)",
+      "category": "Trains & Rails",
+      "tags": [
+        "1.0",
+        "crossing",
+        "roundabout",
+        "junction",
+        "track",
+        "right-hand-drive",
+        "chunk aligned"
+      ],
+      "thumbnail": "zoRneKY.jpg"
+    },
+    {
+      "slug": "elderaxe-s-4-lane-chunk-snapped-rht-tracks-v6-0",
+      "title": "ElderAxe's 4 Lane Chunk Snapped RHT Tracks (v6.0.2)",
+      "category": "Trains & Rails",
+      "tags": [
+        "right-hand-drive",
+        "crossing",
+        "junction",
+        "roundabout",
+        "track",
+        "1.0",
+        "chunk aligned"
+      ],
+      "thumbnail": "FB6lbjM.jpg"
+    },
+    {
+      "slug": "elderaxe-s-factories-v2-4-0",
+      "title": "ElderAxe's Factories (v2.4.0)",
+      "category": "Production Blocks",
+      "tags": [
+        "belts",
+        "electronic circuit (green)",
+        "advanced circuit (red)",
+        "processing unit (blue)",
+        "robots",
+        "uranium",
+        "modules",
+        "1.0"
+      ],
+      "thumbnail": "wAkdvkk.jpg"
+    },
+    {
+      "slug": "factorio-master-class-by-nilaus",
+      "title": "Factorio Master Class (by Nilaus)",
+      "category": "Production Blocks",
+      "tags": [
+        "early game",
+        "mid game",
+        "mall (make everything)",
+        "0.18",
+        "1.0",
+        "late game (megabase)"
+      ],
+      "thumbnail": "BWljxDB.jpg"
+    },
+    {
+      "slug": "four-lane-smelting-plant",
+      "title": "Four lane smelting plant",
+      "category": "Smelting & Mining",
+      "tags": [
+        "smelting",
+        "beaconized",
+        "0.15"
+      ],
+      "thumbnail": "qnUKD80.jpg"
+    },
+    {
+      "slug": "fully-modular-mall-design-for-0-17",
+      "title": "Fully modular Mall Design for 0.17",
+      "category": "Mall",
+      "tags": [
+        "0.17",
+        "mall (make everything)"
+      ],
+      "thumbnail": "hYYWgPM.jpg"
+    },
+    {
+      "slug": "ideal-smelting",
+      "title": "Ideal Smelting",
+      "category": "Smelting & Mining",
+      "tags": [
+        "smelting",
+        "beaconized",
+        "late game (megabase)",
+        "0.15",
+        "tileable",
+        "compact",
+        "0.16"
+      ],
+      "thumbnail": "920E823.jpg"
+    },
+    {
+      "slug": "initial-assemblers",
+      "title": "Initial assemblers",
+      "category": "Starter Base",
+      "tags": [
+        "science",
+        "research (labs)",
+        "early game",
+        "0.15"
+      ],
+      "thumbnail": "xIxHBU7.jpg"
+    },
+    {
+      "slug": "jump-start-base",
+      "title": "Jump Start Base",
+      "category": "Starter Base",
+      "tags": [
+        "early game"
+      ],
+      "thumbnail": "NgaEsfx.jpg"
+    },
+    {
+      "slug": "kitch-s-station-rail-book-1-0",
+      "title": "Kitch's Station Rail Book - 1.0",
+      "category": "Trains & Rails",
+      "tags": [
+        "0.15",
+        "0.16",
+        "stacker",
+        "loading station",
+        "unloading station"
+      ],
+      "thumbnail": "DfqqhuE.jpg"
+    },
+    {
+      "slug": "main-bus-splitting",
+      "title": "Main Bus splitting",
+      "category": "Belts & Balancers",
+      "tags": [
+        "tap",
+        "transport belt (yellow)",
+        "0.15"
+      ],
+      "thumbnail": "4LaqCCb.jpg"
+    },
+    {
+      "slug": "make-it-all-factory",
+      "title": "Make It all Factory",
+      "category": "Mall",
+      "tags": [
+        "mall (make everything)",
+        "late game (megabase)"
+      ],
+      "thumbnail": "J6Dte2d.jpg"
+    },
+    {
+      "slug": "mall-kos-shopping-early-game",
+      "title": "Mall (KoS, Shopping, Early-game)",
+      "category": "Mall",
+      "tags": [
+        "mall (make everything)",
+        "early game",
+        "0.15"
+      ],
+      "thumbnail": "dmJgaFA.jpg"
+    },
+    {
+      "slug": "modular-balanced-unloading-loading-station-rhd-2",
+      "title": "Modular Balanced Unloading/Loading Station RHD (2-4)",
+      "category": "Trains & Rails",
+      "tags": [
+        "unloading station",
+        "mid game",
+        "0.17",
+        "right-hand-drive",
+        "loading station"
+      ],
+      "thumbnail": "gDYCcB5.jpg"
+    },
+    {
+      "slug": "modular-green-circuits",
+      "title": "Modular Green Circuits",
+      "category": "Circuits",
+      "tags": [
+        "electronic circuit (green)"
+      ],
+      "thumbnail": "AvpHtW7.jpg"
+    },
+    {
+      "slug": "modular-mall",
+      "title": "Modular mall",
+      "category": "Mall",
+      "tags": [
+        "1.0",
+        "mall (make everything)"
+      ],
+      "thumbnail": "gtwaPbI.jpg"
+    },
+    {
+      "slug": "nauvis-science-labs-with-beacons",
+      "title": "Nauvis science labs with beacons",
+      "category": "Science",
+      "tags": [
+        "research (labs)",
+        "beaconized",
+        "0.15"
+      ],
+      "thumbnail": "QyMr1Rc.jpg"
+    },
+    {
+      "slug": "neovortex-s-train-stations-book-lhd-3-8-v3-0",
+      "title": "NeoVortex's Train Stations Book - LHD [3-8] (v3.0)",
+      "category": "Trains & Rails",
+      "tags": [
+        "loading station",
+        "tileable",
+        "mid game",
+        "unloading station",
+        "1.0",
+        "left-hand-drive",
+        "late game (megabase)",
+        "chunk aligned"
+      ],
+      "thumbnail": "68fBBAr.jpg"
+    },
+    {
+      "slug": "nilaus-base-in-a-book-complete",
+      "title": "Nilaus' Base-in-a-Book complete",
+      "category": "Starter Base",
+      "tags": [
+        "mall (make everything)",
+        "science",
+        "steam",
+        "tap",
+        "early game",
+        "mid game"
+      ],
+      "thumbnail": "XQryKcr.jpg"
+    },
+    {
+      "slug": "nilaus-base-in-a-book-complete-0-17",
+      "title": "Nilaus' Base-in-a-Book complete 0.17",
+      "category": "Starter Base",
+      "tags": [
+        "mall (make everything)",
+        "steam",
+        "science",
+        "tap",
+        "early game",
+        "mid game",
+        "0.17"
+      ],
+      "thumbnail": "uT43tgh.jpg"
+    },
+    {
+      "slug": "nrc-s-tilable-railway-ver-2023-07-15",
+      "title": "NRC's Tilable Railway [Ver 2023.07.15]",
+      "category": "Trains & Rails",
+      "tags": [
+        "tileable",
+        "early game",
+        "mid game",
+        "late game (megabase)",
+        "compact",
+        "junction",
+        "roundabout",
+        "crossing",
+        "track",
+        "left-hand-drive",
+        "solar",
+        "accumulator",
+        "1.0"
+      ],
+      "thumbnail": "41f8K0u.jpg"
+    },
+    {
+      "slug": "oil-processing",
+      "title": "Oil Processing",
+      "category": "Oil & Chemicals",
+      "tags": [
+        "oil processing",
+        "beaconized",
+        "0.15"
+      ],
+      "thumbnail": "18rhlcV.jpg"
+    },
+    {
       "slug": "output-lane-balancer",
       "title": "Output lane balancer",
-      "category": "Balancer",
+      "category": "Belts & Balancers",
       "tags": [
         "Output",
         "Balancer",
@@ -23,13 +748,527 @@
       "thumbnail": "Screenshot_2026-06-02_183543.png"
     },
     {
+      "slug": "perimeter-defense-5-designs",
+      "title": "Perimeter defense, 5 designs",
+      "category": "Military",
+      "tags": [
+        "tileable",
+        "0.16",
+        "0.17"
+      ],
+      "thumbnail": "3bvhjZq.jpg"
+    },
+    {
+      "slug": "plastic-and-sulfuric-acid",
+      "title": "Plastic and Sulfuric Acid",
+      "category": "Oil & Chemicals",
+      "tags": [
+        "plastic",
+        "0.15"
+      ],
+      "thumbnail": "fWxeAEn.jpg"
+    },
+    {
+      "slug": "production-mall-for-belts-inservers-assemblers",
+      "title": "Production Mall for Belts/Inservers/Assemblers",
+      "category": "Mall",
+      "tags": [
+        "transport belt (yellow)",
+        "fast transport belt (red)",
+        "express transport belt (blue)",
+        "inserters",
+        "mall (make everything)"
+      ],
+      "thumbnail": "73imGeb.jpg"
+    },
+    {
+      "slug": "production-malls-for-trains-production-nuclear",
+      "title": "Production Malls for Trains/Production/Nuclear/High Tech/Circuit Network",
+      "category": "Mall",
+      "tags": [
+        "mall (make everything)"
+      ],
+      "thumbnail": "pLt7d0X.jpg"
+    },
+    {
+      "slug": "raynquist-s-belt-balancers-fall-2025",
+      "title": "Raynquist's Belt Balancers Fall 2025",
+      "category": "Belts & Balancers",
+      "tags": [
+        "balancer",
+        "2.0"
+      ],
+      "thumbnail": "zeEWqba.jpg"
+    },
+    {
+      "slug": "red-circuits",
+      "title": "Red Circuits",
+      "category": "Circuits",
+      "tags": [
+        "advanced circuit (red)",
+        "0.15"
+      ],
+      "thumbnail": "T5WlY0M.jpg"
+    },
+    {
+      "slug": "refinery-book-expandable-beaconable-v-1-0",
+      "title": "Refinery Book - Expandable/Beaconable (v. 1.0)",
+      "category": "Oil & Chemicals",
+      "tags": [
+        "early game",
+        "oil processing",
+        "0.16",
+        "0.17",
+        "0.18",
+        "1.0",
+        "mid game",
+        "beaconized"
+      ],
+      "thumbnail": "tsL29UY.jpg"
+    },
+    {
+      "slug": "rhd-compact-celtic-knot-style-intersection",
+      "title": "RHD Compact Celtic Knot Style Intersection",
+      "category": "Trains & Rails",
+      "tags": [
+        "junction",
+        "right-hand-drive",
+        "compact",
+        "0.15"
+      ],
+      "thumbnail": "zhZ02x0.jpg"
+    },
+    {
+      "slug": "rocket-assembly-v04-for-v0-17-1-rocket-per",
+      "title": "Rocket Assembly v04 for v0.17 (1 rocket per minute, +40 seconds to launch)",
+      "category": "Production Blocks",
+      "tags": [
+        "rocket parts",
+        "0.17"
+      ],
+      "thumbnail": "NMsyZW7.jpg"
+    },
+    {
+      "slug": "rocket-factory",
+      "title": "Rocket Factory",
+      "category": "Production Blocks",
+      "tags": [
+        "rocket parts",
+        "beaconized",
+        "0.15"
+      ],
+      "thumbnail": "awQ5Jmb.jpg"
+    },
+    {
       "slug": "science-lab-setup",
       "title": "Science Lab Setup",
-      "category": "Labs",
+      "category": "Science",
       "tags": [
         "Science"
       ],
       "thumbnail": "Screenshot_2026-06-16_161351.png"
+    },
+    {
+      "slug": "smelting-book",
+      "title": "Smelting Book",
+      "category": "Smelting & Mining",
+      "tags": [
+        "smelting",
+        "0.17"
+      ],
+      "thumbnail": "V5wDymL.jpg"
+    },
+    {
+      "slug": "smelting-in-a-box-iron-copper-steel",
+      "title": "Smelting in a Box - Iron Copper Steel",
+      "category": "Smelting & Mining",
+      "tags": [
+        "smelting",
+        "beaconized",
+        "early game",
+        "mid game",
+        "late game (megabase)",
+        "transport belt (yellow)",
+        "fast transport belt (red)",
+        "express transport belt (blue)",
+        "0.17"
+      ],
+      "thumbnail": "sV1jlx3.jpg"
+    },
+    {
+      "slug": "starter-base-all-science",
+      "title": "Starter Base (All Science)",
+      "category": "Starter Base",
+      "tags": [
+        "early game",
+        "0.17",
+        "science",
+        "compact"
+      ],
+      "thumbnail": "7X4FlaV.jpg"
+    },
+    {
+      "slug": "starter-base-to-robots-quickstart",
+      "title": "Starter Base (to robots) - QuickStart",
+      "category": "Starter Base",
+      "tags": [
+        "0.16",
+        "early game",
+        "compact",
+        "mall (make everything)",
+        "science",
+        "robots"
+      ],
+      "thumbnail": "S7jOteZ.jpg"
+    },
+    {
+      "slug": "starter-base-in-a-box",
+      "title": "Starter Base in a Box",
+      "category": "Starter Base",
+      "tags": [
+        "early game",
+        "mall (make everything)",
+        "compact",
+        "0.16"
+      ],
+      "thumbnail": "ZCqDE52.jpg"
+    },
+    {
+      "slug": "station-with-balanced-unloader",
+      "title": "Station with balanced unloader",
+      "category": "Trains & Rails",
+      "tags": [
+        "unloading station",
+        "storage",
+        "0.15"
+      ],
+      "thumbnail": "9lbI7hg.jpg"
+    },
+    {
+      "slug": "steam-power",
+      "title": "Steam Power",
+      "category": "Power",
+      "tags": [
+        "steam",
+        "0.15"
+      ],
+      "thumbnail": "5Mk1rzo.jpg"
+    },
+    {
+      "slug": "super-compact-tileable-mining-blueprint",
+      "title": "SUPER COMPACT tileable mining blueprint",
+      "category": "Smelting & Mining",
+      "tags": [
+        "mining",
+        "0.15"
+      ],
+      "thumbnail": "bX7qpBH.jpg"
+    },
+    {
+      "slug": "the-automall-factorio-2-0",
+      "title": "The AutoMall - Factorio 2.0",
+      "category": "Mall",
+      "tags": [
+        "mall (make everything)",
+        "2.0"
+      ],
+      "thumbnail": "7KL1CVe.jpg"
+    },
+    {
+      "slug": "the-complete-belt-series-blue-addendum-part-6",
+      "title": "The Complete Belt Series: Blue Addendum, Part 6.",
+      "category": "Belts & Balancers",
+      "tags": [
+        "balancer",
+        "express transport belt (blue)",
+        "0.15"
+      ],
+      "thumbnail": "rAQcQYV.jpg"
+    },
+    {
+      "slug": "the-complete-belt-series-blue-belt-split-off",
+      "title": "The Complete Belt Series: Blue Belt Split-off/Priority Splitters/Separators, Part 9.",
+      "category": "Belts & Balancers",
+      "tags": [
+        "tap",
+        "balancer",
+        "express transport belt (blue)",
+        "0.15"
+      ],
+      "thumbnail": "WIsmJmh.jpg"
+    },
+    {
+      "slug": "the-complete-belt-series-blue-part-3",
+      "title": "The Complete Belt Series: Blue, Part 3.",
+      "category": "Belts & Balancers",
+      "tags": [
+        "balancer",
+        "express transport belt (blue)",
+        "0.15"
+      ],
+      "thumbnail": "sznGd2O.jpg"
+    },
+    {
+      "slug": "the-complete-belt-series-red-addendum-part-5",
+      "title": "The Complete Belt Series: Red Addendum, Part 5.",
+      "category": "Belts & Balancers",
+      "tags": [
+        "balancer",
+        "fast transport belt (red)",
+        "0.15"
+      ],
+      "thumbnail": "svxKX6q.jpg"
+    },
+    {
+      "slug": "the-complete-belt-series-red-belt-split-off",
+      "title": "The Complete Belt Series: Red Belt Split-off/Priority Splitters/Separators, Part 8.",
+      "category": "Belts & Balancers",
+      "tags": [
+        "tap",
+        "balancer",
+        "fast transport belt (red)",
+        "0.15"
+      ],
+      "thumbnail": "lDk94Fx.jpg"
+    },
+    {
+      "slug": "the-complete-belt-series-red-part-2",
+      "title": "The Complete Belt Series: Red, Part 2.",
+      "category": "Belts & Balancers",
+      "tags": [
+        "balancer",
+        "fast transport belt (red)",
+        "0.15"
+      ],
+      "thumbnail": "J66m4yJ.jpg"
+    },
+    {
+      "slug": "the-complete-belt-series-yellow-addendum-part-4",
+      "title": "The Complete Belt Series: Yellow Addendum, Part 4.",
+      "category": "Belts & Balancers",
+      "tags": [
+        "balancer",
+        "transport belt (yellow)",
+        "0.15"
+      ],
+      "thumbnail": "hMMZRRk.jpg"
+    },
+    {
+      "slug": "the-complete-belt-series-yellow-belt-split-off",
+      "title": "The Complete Belt Series: Yellow Belt Split-off/Priority Splitters/Separators, Part 7.",
+      "category": "Belts & Balancers",
+      "tags": [
+        "tap",
+        "balancer",
+        "transport belt (yellow)",
+        "0.15"
+      ],
+      "thumbnail": "crVpepF.jpg"
+    },
+    {
+      "slug": "the-complete-belt-series-yellow-part-1",
+      "title": "The Complete Belt Series: Yellow, Part 1.",
+      "category": "Belts & Balancers",
+      "tags": [
+        "balancer",
+        "transport belt (yellow)",
+        "0.15"
+      ],
+      "thumbnail": "C4Mr1Ww.jpg"
+    },
+    {
+      "slug": "the-smelter",
+      "title": "The Smelter",
+      "category": "Smelting & Mining",
+      "tags": [
+        "smelting",
+        "beaconized",
+        "express transport belt (blue)",
+        "late game (megabase)",
+        "tileable",
+        "compact",
+        "other",
+        "left-hand-drive",
+        "0.17",
+        "mining",
+        "belt based",
+        "loading station",
+        "unloading station",
+        "junction",
+        "stacker",
+        "0.18",
+        "1.0",
+        "chunk aligned",
+        "right-hand-drive"
+      ],
+      "thumbnail": "yQSnYC9.jpg"
+    },
+    {
+      "slug": "tiered-universal-smelters",
+      "title": "Tiered Universal Smelters",
+      "category": "Smelting & Mining",
+      "tags": [
+        "smelting",
+        "0.15"
+      ],
+      "thumbnail": "gRyuyVE.jpg"
+    },
+    {
+      "slug": "tilable-compact-battery-assembly",
+      "title": "Tilable compact battery assembly",
+      "category": "Oil & Chemicals",
+      "tags": [
+        "batteries",
+        "0.15",
+        "screenshot missing alt info",
+        "compact"
+      ],
+      "thumbnail": "fMYDftk.jpg"
+    },
+    {
+      "slug": "tileable-0-15-refinery",
+      "title": "Tileable 0.15 Refinery",
+      "category": "Oil & Chemicals",
+      "tags": [
+        "oil processing",
+        "tileable",
+        "0.15"
+      ],
+      "thumbnail": "ktpwtIq.jpg"
+    },
+    {
+      "slug": "tileable-science-production-1-0-2-0-early-to-mid",
+      "title": "Tileable Science Production 1.0-2.0 - Early to Mid Game (Vanilla)",
+      "category": "Science",
+      "tags": [
+        "early game",
+        "tileable",
+        "mid game",
+        "0.17",
+        "science"
+      ],
+      "thumbnail": "42RoMSi.jpg"
+    },
+    {
+      "slug": "train-smelting-21-6k-iron-copper-and-4-32k-steel",
+      "title": "Train Smelting 21.6k Iron Copper and 4.32k Steel",
+      "category": "Smelting & Mining",
+      "tags": [
+        "smelting",
+        "loading station",
+        "unloading station",
+        "stacker",
+        "1.0"
+      ],
+      "thumbnail": "oQZd2Po.jpg"
+    },
+    {
+      "slug": "unloading-station",
+      "title": "Unloading Station",
+      "category": "Trains & Rails",
+      "tags": [
+        "unloading station",
+        "0.15"
+      ],
+      "thumbnail": "hx5CAqA.jpg"
+    },
+    {
+      "slug": "uranium-enrichment-process",
+      "title": "Uranium enrichment process",
+      "category": "Power",
+      "tags": [
+        "kovarex enrichment",
+        "uranium"
+      ],
+      "thumbnail": "ayqzjOe.jpg"
+    },
+    {
+      "slug": "vanilla-production-blocks",
+      "title": "Vanilla Production Blocks",
+      "category": "Production Blocks",
+      "tags": [
+        "0.17"
+      ],
+      "thumbnail": "yFFTxs6.jpg"
+    },
+    {
+      "slug": "vanilla-train-network-by-haphollas",
+      "title": "Vanilla Train Network by Haphollas",
+      "category": "Trains & Rails",
+      "tags": [
+        "loading station",
+        "unloading station"
+      ],
+      "thumbnail": "IuCohis.jpg"
+    },
+    {
+      "slug": "power-book-compact-tileable-no-waste-nuclear",
+      "title": "☀️ Power Book ☢️ - Compact, Tileable, No Waste Nuclear, Solar, Steam",
+      "category": "Power",
+      "tags": [
+        "kovarex enrichment",
+        "uranium",
+        "nuclear",
+        "compact",
+        "tileable",
+        "solar",
+        "accumulator",
+        "steam",
+        "early game",
+        "mid game",
+        "late game (megabase)",
+        "marathon",
+        "chunk aligned",
+        "beaconized",
+        "counter",
+        "indicator",
+        "2.0"
+      ],
+      "thumbnail": "EL5C7TO.jpg"
+    },
+    {
+      "slug": "compact-480mw-48x48-tile-nuclear-reactor",
+      "title": "☢️ Compact 480MW 48x48 tile nuclear reactor.",
+      "category": "Power",
+      "tags": [
+        "nuclear",
+        "compact",
+        "2.0"
+      ],
+      "thumbnail": "U0TgIPa.jpg"
+    },
+    {
+      "slug": "power-indicator-with-alarm",
+      "title": "🔌 🔊 Power Indicator with Alarm",
+      "category": "Power",
+      "tags": [
+        "indicator",
+        "0.15"
+      ],
+      "thumbnail": "3ii5th2.jpg"
+    },
+    {
+      "slug": "train-items-production",
+      "title": "🚂 Train items production",
+      "category": "Mall",
+      "tags": [
+        "other",
+        "0.15"
+      ],
+      "thumbnail": "rANEcIx.jpg"
+    },
+    {
+      "slug": "modular-rail-network",
+      "title": "🛤️ Modular Rail Network",
+      "category": "Trains & Rails",
+      "tags": [
+        "junction",
+        "crossing",
+        "right-hand-drive",
+        "0.15",
+        "chunk aligned"
+      ],
+      "thumbnail": "7UHaFA1.jpg"
     }
   ]
 }
