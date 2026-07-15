@@ -579,10 +579,12 @@ def cmd_report():
 
 THUMB_WIDTH = 480   # card-grid thumbnails (rendered at ~220-320 CSS px)
 FULL_WIDTH = 1024   # article screenshot
-WEBP_OPTS = {"format": "WEBP", "quality": 80, "method": 6}
+# AVIF ~q60 matches WebP ~q80 visually at noticeably smaller sizes. Every
+# major browser has decoded AVIF for years (Edge was last, early 2024).
+IMG_OPTS = {"format": "AVIF", "quality": 60, "speed": 5}
 
-def save_webp(data, path, max_width):
-    """Re-encodes image bytes as WebP capped at max_width; returns True on success."""
+def save_optimized(data, path, max_width):
+    """Re-encodes image bytes as AVIF capped at max_width; returns True on success."""
     from PIL import Image
     try:
         im = Image.open(io.BytesIO(data))
@@ -592,14 +594,14 @@ def save_webp(data, path, max_width):
         if im.width > max_width:
             im = im.resize((max_width, round(im.height * max_width / im.width)),
                            Image.LANCZOS)
-        im.save(path, **WEBP_OPTS)
+        im.save(path, **IMG_OPTS)
         return True
     except Exception as e:
-        print(f"       webp encode failed ({e})")
+        print(f"       avif encode failed ({e})")
         return False
 
 def fetch_image(pid, rec, img_dir):
-    """Downloads the print's screenshot, stores it as WebP (full article image
+    """Downloads the print's screenshot, stores it as AVIF (full article image
     plus a small card thumbnail); returns (image_name, thumb_name) or (None, None)."""
     image = rec.get("image") or {}
     imgur_id = image.get("id") or rec.get("imgurId")
@@ -627,10 +629,10 @@ def fetch_image(pid, rec, img_dir):
             print(f"       image unusable ({len(data)} bytes) {url}")
             continue
         img_dir.mkdir(parents=True, exist_ok=True)
-        full, thumb = f"{stem}.webp", f"{stem}-thumb.webp"
-        if not save_webp(data, img_dir / full, FULL_WIDTH):
+        full, thumb = f"{stem}.avif", f"{stem}-thumb.avif"
+        if not save_optimized(data, img_dir / full, FULL_WIDTH):
             continue
-        if not save_webp(data, img_dir / thumb, THUMB_WIDTH):
+        if not save_optimized(data, img_dir / thumb, THUMB_WIDTH):
             thumb = full  # fall back to the article image for the card
         return full, thumb
     return None, None
