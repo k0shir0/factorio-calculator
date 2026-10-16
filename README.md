@@ -11,7 +11,7 @@ content.
 
 
 npm run editor          # or:  node tools/editor-server.js
-# open http://localhost:8080, create a blueprint, click "Save to local repo"
+open http://localhost:8080, create a blueprint, click "Save to local repo"
 git add content/blueprints && git commit -m "Add blueprint" && git push
 ```
 
